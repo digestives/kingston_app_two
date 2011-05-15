@@ -18,7 +18,7 @@
 <h1>Recent Bookings</h1>
   <ul>
   <% @user.bookings.each do |booking| %>
-    <li><%= link_to booking.activity.title, booking.activity %></li>
+    <li><h5><%= link_to booking.activity.title, booking.activity %></h5></li>
   <% end %>
   </ul>
 </div>

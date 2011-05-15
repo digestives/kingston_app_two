@@ -1,10 +1,10 @@
 <%= content_tag_for(:tr, activity) do %>
       <td><%= activity.title %></td>
       <td><%= activity.description %></td>
-      <td><%= activity.users.count %> / <%= activity.limit %></td>
+      <td><p style="color:<%= display_color(activity.users.count, activity.limit) %>"><%= activity.users.count %> / <%= activity.limit %></p></td>
       <td><%= activity.start.strftime("%x %X %p") %></td>
       <td><%= activity.end.strftime("%x %X %p") %></td>
-      <td><%= link_to 'Book', booking_path(activity), :remote => true %></td>
+      <td><%= link_to 'Book', booking_path(activity), :remote => true if activity.users.count < activity.limit %></td>
       <td><%= link_to 'Show', activity %></td>
       <% if signed_in? && current_user.admin? %>
       <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
