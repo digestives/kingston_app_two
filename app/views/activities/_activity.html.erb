@@ -1,9 +1,9 @@
 <%= content_tag_for(:tr, activity) do %>
       <td><%= activity.title %></td>
       <td><%= activity.description %></td>
-      <td><%= activity.limit %></td>
-      <td><%= activity.start %></td>
-      <td><%= activity.end %></td>
+      <td><%= activity.users.count %> / <%= activity.limit %></td>
+      <td><%= activity.start.strftime("%x %X %p") %></td>
+      <td><%= activity.end.strftime("%x %X %p") %></td>
       <td><%= link_to 'Book', '#' %></td>
       <td><%= link_to 'Show', activity %></td>
       <% if signed_in? && current_user.admin? %>
