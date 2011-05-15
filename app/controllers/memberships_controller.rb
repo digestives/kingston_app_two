@@ -7,17 +7,15 @@ class MembershipsController < ApplicationController
     @title = "Memberships"
     @memberships = Membership.all
     @membership = Membership.new
-
-    flash.now[:info] = "Sorry, there are no memberships available at the moment" if @memberships.empty?
+    flash.now[:notice] = "Sorry, there are no memberships available at the moment" if @memberships.empty?
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.xml  { render :xml => @memberships }
     end
   end
 
   def show
     @membership = Membership.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @membership }

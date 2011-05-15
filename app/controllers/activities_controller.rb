@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
 
   before_filter :authenticate, :only => [:new, :edit, :update, :destroy, :booking]
-  before_filter :admin_user, :except => [:index]
+  before_filter :admin_user, :except => [:index, :booking, :show]
 
 
   def booking
@@ -15,7 +15,7 @@ class ActivitiesController < ApplicationController
           format.html { redirect_to current_user }
           format.js
         else
-          flash[:notice] = render_to_string(:partial => 'activities/flash/one');
+          flash[:notice] = render_to_string(:partial => 'flash/one');
           format.html { redirect_to activities_path }
           format.js
         end

@@ -16,11 +16,11 @@
 
 <div class="span-12">
 <h1>Recent Bookings</h1>
-
+  <ul>
   <% @user.bookings.each do |booking| %>
-    <%= booking.created_at %>
+    <li><%= link_to booking.activity.title, booking.activity %></li>
   <% end %>
-
+  </ul>
 </div>
 
 <% if signed_in? and current_user?(@user) %>
@@ -40,7 +40,7 @@
   <fieldset class="box">
    <legend>Booking Options</legend>
       <%= link_to "New Booking", '#' %>
-     <%= link_to "List History", '#' %>
+      <%= link_to "List History", '#' %>
    </fieldset>
    <% end %>
 

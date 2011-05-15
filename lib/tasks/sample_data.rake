@@ -12,6 +12,8 @@ namespace :db do
     make_memberships
     make_posts
     make_activities
+    make_subscriptions
+    make_bookings
 
   end
 
@@ -111,7 +113,29 @@ namespace :db do
 		end
 	end
 
+  def make_bookings
 
+		users = User.all
+    users.each do |user|
+      if user.has_subscription? && user.subscription.membership.swimming?
+          @activities = Activity.find(:all)
+            @activities.each do |activity|
+            	booking = Booking.create(:activity_id => activity.id)
+              user.bookings << booking
+            end
+      end
+		end
 
+	end
+
+  def make_subscriptions
+
+    users = User.all
+    memberships = Membership.all
+
+    users.each do |user|
+        user.create_subscription(:membership_id => memberships.rand)
+    end
+  end
 end
 
