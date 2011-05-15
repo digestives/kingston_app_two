@@ -114,18 +114,18 @@ namespace :db do
 	end
 
   def make_bookings
-
 		users = User.all
     users.each do |user|
       if user.has_subscription? && user.subscription.membership.swimming?
           @activities = Activity.find(:all)
             @activities.each do |activity|
-            	booking = Booking.create(:activity_id => activity.id)
-              user.bookings << booking
+              if activity.users.count < activity.limit
+              	booking = Booking.create(:activity_id => activity.id)
+                user.bookings << booking
+              end
             end
       end
 		end
-
 	end
 
   def make_subscriptions
