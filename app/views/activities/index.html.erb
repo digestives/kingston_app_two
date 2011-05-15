@@ -31,7 +31,8 @@
 
   <br />
 
+  <% if signed_in? && current_user.admin? %>
   <%= link_to 'New Activity', new_activity_path %>
-
+  <% end %>
 </div>
 
