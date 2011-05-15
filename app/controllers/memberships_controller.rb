@@ -4,6 +4,7 @@ class MembershipsController < ApplicationController
   before_filter :admin_user, :except => [:index]
 
   def index
+    @title = "Memberships"
     @memberships = Membership.all
     @membership = Membership.new
 
@@ -46,6 +47,7 @@ class MembershipsController < ApplicationController
         format.xml  { render :xml => @membership, :status => :created, :location => @membership }
         format.js
       else
+        @title = "New Membership"
         format.html { render :action => "new" }
         format.xml  { render :xml => @membership.errors, :status => :unprocessable_entity }
         format.js { render }

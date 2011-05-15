@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
 
   def index
+    @title = "News"
     @post = Post.new
     @posts = Post.all
 
@@ -22,6 +23,7 @@ class PostsController < ApplicationController
 
 
   def new
+    @title = "New Post"
     @post = Post.new
 
     respond_to do |format|
@@ -31,6 +33,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @title = "Edit"
     @post = Post.find(params[:id])
   end
 
@@ -43,6 +46,7 @@ class PostsController < ApplicationController
         format.xml  { render :xml => @post, :status => :created, :location => @post }
         format.js
       else
+        @title = "New Post"
         format.html { render :action => "new" }
         format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
       end

@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
-  # GET /activities
-  # GET /activities.xml
+
   def index
+    @title = "Activities"
     @activities = Activity.all
 
     respond_to do |format|
@@ -10,10 +10,9 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  # GET /activities/1
-  # GET /activities/1.xml
   def show
     @activity = Activity.find(params[:id])
+    @title = "Activity #{@activity.id}"
 
     respond_to do |format|
       format.html # show.html.erb
@@ -21,9 +20,8 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  # GET /activities/new
-  # GET /activities/new.xml
   def new
+    @title = "New Activity"
     @activity = Activity.new
 
     respond_to do |format|
@@ -32,13 +30,11 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  # GET /activities/1/edit
   def edit
+    @title = "Edit Activity"
     @activity = Activity.find(params[:id])
   end
 
-  # POST /activities
-  # POST /activities.xml
   def create
     @activity = Activity.new(params[:activity])
 
@@ -47,14 +43,13 @@ class ActivitiesController < ApplicationController
         format.html { redirect_to(@activity, :notice => 'Activity was successfully created.') }
         format.xml  { render :xml => @activity, :status => :created, :location => @activity }
       else
+        @title = "New Activity"
         format.html { render :action => "new" }
         format.xml  { render :xml => @activity.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # PUT /activities/1
-  # PUT /activities/1.xml
   def update
     @activity = Activity.find(params[:id])
 
@@ -69,8 +64,6 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  # DELETE /activities/1
-  # DELETE /activities/1.xml
   def destroy
     @activity = Activity.find(params[:id])
     @activity.destroy
@@ -81,3 +74,4 @@ class ActivitiesController < ApplicationController
     end
   end
 end
+

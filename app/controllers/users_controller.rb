@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
 
   def index
+    @title = "Users"
     @users = User.all
     @user = User.new
     respond_to do |format|
@@ -25,6 +26,7 @@ class UsersController < ApplicationController
 
 
   def new
+    @title = "Sign up"
     @users = User.find(:all, :order => "id desc", :limit => 5)
     @user = User.new
 
