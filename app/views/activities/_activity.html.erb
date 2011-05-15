@@ -4,7 +4,7 @@
       <td><%= activity.users.count %> / <%= activity.limit %></td>
       <td><%= activity.start.strftime("%x %X %p") %></td>
       <td><%= activity.end.strftime("%x %X %p") %></td>
-      <td><%= link_to 'Book', '#' %></td>
+      <td><%= link_to 'Book', booking_path(activity), :remote => true %></td>
       <td><%= link_to 'Show', activity %></td>
       <% if signed_in? && current_user.admin? %>
       <td><%= link_to 'Edit', edit_activity_path(activity) %></td>

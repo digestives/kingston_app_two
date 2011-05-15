@@ -21,6 +21,8 @@ DemoApp::Application.routes.draw do
 
   match '/memberships/:id/purchase' => 'memberships#purchase', :as => :purchase
 
+  match '/booking/:id' => 'bookings#new', :as => :booking
+
   root :to => 'pages#index'
 
   # The priority is based upon order of creation:
