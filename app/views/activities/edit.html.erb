@@ -1,6 +1,9 @@
 <h1>Editing activity</h1>
-
-<%= render 'form' %>
+<%= form_for(@activity) do |f| %>
+<%= render 'form', :f => f %>
+  <%= f.submit %>
+<% end %>
 
 <%= link_to 'Show', @activity %> |
 <%= link_to 'Back', activities_path %>
+
