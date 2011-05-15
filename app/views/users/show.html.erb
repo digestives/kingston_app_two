@@ -12,9 +12,18 @@
   <%= @user.created_at %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
 </div>
+
+<div class="span-12">
+<h1>Recent Bookings</h1>
+
+  <% @user.bookings.each do |booking| %>
+    <%= booking.created_at %>
+  <% end %>
+
+</div>
+
+<% if signed_in? and current_user?(@user) %>
 
 <div class="span-12 last">
 
@@ -36,4 +45,6 @@
    <% end %>
 
 </div>
+
+<% end %>
 

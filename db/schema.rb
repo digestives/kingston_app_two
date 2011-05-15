@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110515002652) do
+ActiveRecord::Schema.define(:version => 20110515175902) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(:version => 20110515002652) do
     t.integer  "limit"
     t.datetime "start"
     t.datetime "end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bookings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "activity_id"
+    t.integer  "guests"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

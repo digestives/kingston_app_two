@@ -18,7 +18,9 @@ require 'digest'
 
 class User < ActiveRecord::Base
 
+  has_many :bookings
   has_many :posts
+
 	has_one :subscription
 	has_one :membership, :through => :subscription
 

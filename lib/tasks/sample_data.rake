@@ -11,6 +11,7 @@ namespace :db do
     make_users
     make_memberships
     make_posts
+    make_activities
 
   end
 
@@ -88,6 +89,29 @@ namespace :db do
 												 :price => price)
 		end
 	end
+
+  def make_activities
+
+    starts = Time.now + 2.days
+
+		10.times do |n|
+
+			title = Faker::Lorem.words(2)
+			description = Faker::Lorem.paragraph(1)
+      starts + 1.days
+      limit = Activity::LIMIT.rand
+      ends = starts + 30.minutes
+
+			Activity.create!(:title => title,
+										   :description => description,
+                       :limit => limit,
+                       :start => starts,
+                       :end => ends)
+
+		end
+	end
+
+
 
 end
 
