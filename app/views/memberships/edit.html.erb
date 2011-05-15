@@ -1,6 +1,11 @@
 <h1>Editing membership</h1>
-
-<%= render 'form' %>
+  <%= form_for(@membership) do |f| %>
+    <%= render 'form', :f => f %>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
 
 <%= link_to 'Show', @membership %> |
 <%= link_to 'Back', memberships_path %>
+
