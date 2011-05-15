@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_filter :authenticate, :except => [:show, :new]
-  before_filter :admin_user, :except => [:show, :new]
+  before_filter :admin_user, :except => [:show, :new, :cancel_booking]
 
   def index
     @title = "Users"
@@ -84,5 +84,17 @@ class UsersController < ApplicationController
       format.js
     end
   end
+
+  def cancel_booking
+    @booking = current_user.bookings.find(params[:id])
+    respond_to do |format|
+      flash[:notice] = "Your booking has been removed"
+      format.html { redirect_to(current_user) }
+      format.js
+    end
+    @booking.destroy
+  end
+
+
 end
 

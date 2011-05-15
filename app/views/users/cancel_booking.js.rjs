@@ -1,0 +1,6 @@
+page[:notice].visual_effect :appear
+page.replace_html :notice, flash[:notice]
+flash.discard
+page.visual_effect(:highlight, "booking_#{@booking.id}")
+page.remove("booking_#{@booking.id}")
+

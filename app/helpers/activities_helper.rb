@@ -10,5 +10,13 @@ module ActivitiesHelper
       end
    end
 
+  def not_booked(activity)
+    current_user.bookings.each do |booking|
+      if booking.activity == activity
+          return false
+      end
+    end
+  end
+
 end
 

@@ -22,6 +22,7 @@ DemoApp::Application.routes.draw do
   match '/memberships/:id/purchase' => 'memberships#purchase', :as => :purchase
 
   match '/booking/:id' => 'activities#booking', :as => :booking
+  match '/users/bookings/:id' => 'users#cancel_booking', :as => :cancel_booking
 
   root :to => 'pages#index'
 

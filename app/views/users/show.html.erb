@@ -18,7 +18,14 @@
 <h1>Recent Bookings</h1>
   <ul>
   <% @user.bookings.each do |booking| %>
-    <li><h5><%= link_to booking.activity.title, booking.activity %></h5></li>
+    <%= content_tag_for(:li, booking) do %>
+      <h5><%= link_to booking.activity.title, booking.activity %></h5>
+      <% if signed_in? && current_user?(@user) %>
+        <% if Time.now < booking.activity.end %>
+          <p><%= link_to "Cancel", cancel_booking_path(booking), :remote => true %></p>
+        <% end %>
+      <% end %>
+    <% end %>
   <% end %>
   </ul>
 </div>
