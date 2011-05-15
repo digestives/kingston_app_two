@@ -90,7 +90,7 @@ class MembershipsController < ApplicationController
             else
               membership = Membership.find_by_id(params[:id])
 			        current_user.create_subscription(:membership => membership)
-              flash[:success] = "You have purchased #{membership.title} membership."
+              flash[:success] = "You have purchased the #{membership.title} membership!"
 			        format.html { redirect_to(current_user) }
               format.js
             end
