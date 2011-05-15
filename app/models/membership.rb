@@ -25,11 +25,11 @@ class Membership < ActiveRecord::Base
 
   attr_accessible :swimming, :sauna, :tennis, :title, :description, :price, :guests
 
-	validates :title, :presence => true, :length => { :within => 3..150 }
+	validates :title, :presence => true, :length => { :maximum => 150 }
 	validates :description, :presence => true
   validates :swimming, :inclusion => { :in => [true], :message => "must be granted if tennis or sauna is not" }, :if => lambda { |m| !m.tennis && !m.sauna }
 	validates :price, :presence => true
-	validates :guests, :allow_blank => true, :numericality => true, :inclusion => { :in => 1..30 }
+	validates :guests, :allow_blank => true, :numericality => true, :inclusion => { :in => NUM_GUESTS_ALLOWED }
 
 end
 

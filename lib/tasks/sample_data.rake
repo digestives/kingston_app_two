@@ -61,7 +61,7 @@ namespace :db do
 			  title = Faker::Lorem.words(2)
 			  description  = Faker::Lorem.paragraph(2)
 			  published = true
-			  user.posts.create!(:title => title, :description => body, :published => published)
+			  user.posts.create!(:title => title, :description => description, :published => published)
       end
 		end
 	end
