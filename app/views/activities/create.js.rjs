@@ -1,0 +1,5 @@
+
+page.insert_html(:after, 'activities', :partial => 'activity', :object => @activity)
+
+page.visual_effect(:highlight, "activity_#{@activity.id}")
+

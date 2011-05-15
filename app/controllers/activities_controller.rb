@@ -1,7 +1,12 @@
 class ActivitiesController < ApplicationController
 
+  before_filter :authenticate, :only => [:new, :edit, :update, :destroy]
+  before_filter :admin_user, :except => [:index]
+
+
   def index
     @title = "Activities"
+    @activity = Activity.new if signed_in? and current_user.admin?
     @activities = Activity.all
 
     respond_to do |format|
@@ -42,6 +47,7 @@ class ActivitiesController < ApplicationController
       if @activity.save
         format.html { redirect_to(@activity, :notice => 'Activity was successfully created.') }
         format.xml  { render :xml => @activity, :status => :created, :location => @activity }
+        format.js
       else
         @title = "New Activity"
         format.html { render :action => "new" }

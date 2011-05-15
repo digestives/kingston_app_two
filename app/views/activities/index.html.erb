@@ -1,32 +1,37 @@
-<h1>Listing activities</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Limit</th>
-    <th>Start</th>
-    <th>End</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @activities.each do |activity| %>
-  <tr>
-    <td><%= activity.title %></td>
-    <td><%= activity.description %></td>
-    <td><%= activity.limit %></td>
-    <td><%= activity.start %></td>
-    <td><%= activity.end %></td>
-    <td><%= link_to 'Show', activity %></td>
-    <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-    <td><%= link_to 'Destroy', activity, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<% if signed_in? && current_user.admin %>
+  <div class="span-24">
+  <%= form_for(@activity, :remote => true) do |f| %>
+  <%= render 'form', :f => f %>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+  </div>
 <% end %>
-</table>
 
-<br />
 
-<%= link_to 'New Activity', new_activity_path %>
+<div class="span-24">
+
+  <h1>Listing activities</h1>
+
+  <table>
+    <tr id="activities">
+      <th>Title</th>
+      <th>Description</th>
+      <th>Limit</th>
+      <th>Starts</th>
+      <th>Ends</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <%= render @activities  %><!-- it knows to render _activity.html.erb -->
+  </table>
+
+  <br />
+
+  <%= link_to 'New Activity', new_activity_path %>
+
+</div>
 
