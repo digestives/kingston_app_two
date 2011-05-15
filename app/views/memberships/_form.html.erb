@@ -31,7 +31,8 @@
 
     <div class="field">
       <%= f.label :guests %><br />
-      <%= f.text_field :guests %>
+      <%#= f.text_field :guests %>
+      <%= f.select :guests, Membership::NUM_GUESTS_ALLOWED, :prompt => "None" %><br/>
     </div>
 
     <div class="field">
