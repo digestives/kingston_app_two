@@ -3,7 +3,7 @@
       <% if signed_in? && current_user.admin? %>
       <%= link_to logo, admin_path %>
       <% else %>
-      <%= link_to logo, signed_in? ? current_user : root_path %>
+      <%= link_to logo, signed_in? ? user_path(current_user) : root_path %>
       <% end %>
     <nav>
       <ul>

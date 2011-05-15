@@ -1,5 +1,5 @@
-
-<h1><%= @user.full_name %></h1>
+<div class="span-12">
+<h1><%= @user.full_name %>'s Profile</h1>
 
 
 <p>
@@ -7,6 +7,33 @@
   <%= @user.email %>
 </p>
 
+<p>
+  <b>Registered:</b>
+  <%= @user.created_at %>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+</div>
+
+<div class="span-12 last">
+
+
+  <h1>Membership</h1>
+  <% if !current_user.has_subscription? %>
+    <h2>Purchase a membership now!</h2>
+  <% else %>
+    <fieldset class="box">
+   <legend>Membership Options</legend>
+     <%= link_to "Cancel", '#' %>
+   </fieldset>
+
+  <fieldset class="box">
+   <legend>Booking Options</legend>
+      <%= link_to "New Booking", '#' %>
+     <%= link_to "List History", '#' %>
+   </fieldset>
+   <% end %>
+
+</div>
 

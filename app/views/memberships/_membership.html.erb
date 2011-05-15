@@ -15,7 +15,9 @@
     </td>
     <td><%= membership.price %></td>
     <td>
-      <%= link_to 'Purchase', signed_in? ? purchase_url(membership) : signup_path %>
+      <% if signed_in? && !current_user.has_subscription? || !signed_in? %>
+        <h5><%= link_to 'Purchase!', purchase_path(membership), :remote => true %></h5>
+      <% end %>
       <% if signed_in? and current_user.admin? %>
       <%= link_to 'Show', membership %>
       <%= link_to 'Edit', edit_membership_path(membership) %>

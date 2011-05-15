@@ -75,7 +75,7 @@ namespace :db do
       swimming = true
 			sauna = [true, false].rand
 			tennis = [true, false].rand
-			guests = rand(5)
+			guests = [1, 2, 4, 6, 8, 15, 30].rand
 			# Random number, then rounded with a precision of two from the decimal
 			price = (rand * 50).round(2)
 

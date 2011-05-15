@@ -1,7 +1,7 @@
 class MembershipsController < ApplicationController
 
   before_filter :authenticate, :only => [:show, :new, :edit, :update, :destroy]
-  before_filter :admin_user, :except => [:index]
+  before_filter :admin_user, :except => [:index, :purchase]
 
   def index
     @title = "Memberships"
@@ -81,8 +81,27 @@ class MembershipsController < ApplicationController
 
   def purchase
 
-  end
+    respond_to do |format|
+        if signed_in?
+          	if current_user.has_subscription?
+          	 flash[:info] = "You must cancel your current membership before purchasing another."
+          	 format.html { redirect_to(current_user) }
+             format.js
+            else
+              membership = Membership.find_by_id(params[:id])
+			        current_user.create_subscription(:membership => membership)
+              flash[:success] = "You have purchased #{membership.title} membership."
+			        format.html { redirect_to(current_user) }
+              format.js
+            end
+        else
+          flash[:notice] = render_to_string(:partial => 'memberships/flash/one')
+          format.html { redirect_to(signup_path) }
+          format.js
+		    end
+    end
 
+  end
 
 end
 

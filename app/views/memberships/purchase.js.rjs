@@ -1,0 +1,18 @@
+if flash[:notice]
+  page[:notice].visual_effect :appear
+  page.replace_html :notice, flash[:notice]
+  flash.discard
+end
+
+if flash[:success]
+  page[:success].visual_effect :appear
+  page.replace_html :success, flash[:success]
+  flash.discard
+end
+
+if flash[:info]
+  page[:info].visual_effect :appear
+  page.replace_html :info, flash[:info]
+  flash.discard
+end
+
