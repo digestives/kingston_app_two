@@ -1,10 +1,24 @@
-<%= content_tag_for(:li, post) do %>
-    <%= post.title %>
-    <%= post.description %>
-    <%= post.published %>
-    <%= post.user.full_name %>
-    <%= link_to 'Show', post %>
-    <%= link_to 'Edit', edit_post_path(post) %>
-    <%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
-<% end %>
+
+<%#= content_tag_for(:li, post) do %>
+    <%#= post.title %>
+    <%#= post.description %>
+    <%#= post.published %>
+    <%#= post.user.full_name %>
+    <%#= link_to 'Show', post %>
+    <%#= link_to 'Edit', edit_post_path(post) %>
+    <%#= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
+<%#end %>
+
+<div class="box">
+  <h2><%= post.title %></h2>
+  <p><%= post.description %></p>
+  <%# http://railsapi.com/doc/ruby-v1.9.2/classes/Date.html#M004849 %>
+  <%# http://railsforum.com/viewtopic.php?id=988 %>
+  <p>Published by <b><%= publish_info(post) %></b> on <%= post.created_at.strftime("%x %X") %>.</p>
+  <p>
+    <%= link_to "EDIT", edit_post_path(post) %> |
+    <%= link_to "DELETE", post_path(post), :method => :delete, :confirm => "Are you sure?" %> |
+    Published: <%= post.published ? image_tag("/stylesheets/blueprint/plugins/buttons/icons/tick.png") : image_tag("/stylesheets/blueprint/plugins/buttons/icons/cross.png") %>
+  </p>
+</div>
 
