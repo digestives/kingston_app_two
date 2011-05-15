@@ -16,9 +16,10 @@
   <%# http://railsforum.com/viewtopic.php?id=988 %>
   <p>Published by <b><%= publish_info(post) %></b> on <%= post.created_at.strftime("%x %X") %>.</p>
   <p>
+    <% if signed_in? && current_user.admin? %>
     <%= link_to "EDIT", edit_post_path(post) %> |
     <%= link_to "DELETE", post_path(post), :method => :delete, :confirm => "Are you sure?" %> |
-    Published: <%= post.published ? image_tag("/stylesheets/blueprint/plugins/buttons/icons/tick.png") : image_tag("/stylesheets/blueprint/plugins/buttons/icons/cross.png") %>
+    Published: <%= post.published ? image_tag("/stylesheets/blueprint/plugins/buttons/icons/tick.png") : image_tag("/stylesheets/blueprint/plugins/buttons/icons/cross.png") %><% end %>
   </p>
 </div>
 
