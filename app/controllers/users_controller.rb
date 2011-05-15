@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_filter :authenticate, :except => [:show, :new]
+  before_filter :admin_user, :except => [:show, :new]
 
   def index
     @title = "Users"
