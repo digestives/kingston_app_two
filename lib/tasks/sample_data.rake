@@ -39,6 +39,20 @@ namespace :db do
 
   def make_users
 
+    User.create!(:forename => "Patrick",
+		  						 :surname => "Magee",
+		               :email => "patrick.magee@live.co.uk",
+		               :password => "password",
+		               :password_confirmation => "password",
+		               :terms_of_service => "1")
+
+    User.create!(:forename => "Paul",
+		  						 :surname => "Laroy",
+		               :email => "paul.laroy@live.co.uk",
+		               :password => "password",
+		               :password_confirmation => "password",
+		               :terms_of_service => "1")
+
 		50.times do |n|
 		  forename  = Faker::Name.first_name
 		  surname 	= Faker::Name.last_name
@@ -73,8 +87,8 @@ namespace :db do
 
 		5.times do |n|
 
-			title = Faker::Lorem.words(2)
-			description = Faker::Lorem.paragraph(1)
+			title = Faker::Lorem.sentence(1)
+			description = Faker::Lorem.paragraph(2)
       swimming = true
 			sauna = [true, false].rand
 			tennis = [true, false].rand
@@ -98,8 +112,8 @@ namespace :db do
 
 		10.times do |n|
 
-			title = Faker::Lorem.words(2)
-			description = Faker::Lorem.paragraph(1)
+			title = Faker::Lorem.sentence(1)
+			description = Faker::Lorem.paragraph(2)
       starts + 1.days
       limit = Activity::LIMIT.rand
       ends = starts + 30.minutes

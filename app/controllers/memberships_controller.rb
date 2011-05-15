@@ -1,7 +1,7 @@
 class MembershipsController < ApplicationController
 
-  before_filter :authenticate, :only => [:show, :new, :edit, :update, :destroy]
-  before_filter :admin_user, :except => [:index, :purchase]
+  before_filter :authenticate, :only => [:new, :edit, :update, :destroy]
+  before_filter :admin_user, :except => [:index, :purchase, :show]
 
   def index
     @title = "Memberships"

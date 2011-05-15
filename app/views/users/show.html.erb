@@ -34,6 +34,7 @@
   <% else %>
     <fieldset class="box">
    <legend>Membership Options</legend>
+     <%= link_to "Show", current_user.subscription.membership %>
      <%= link_to "Cancel", '#' %>
    </fieldset>
 
