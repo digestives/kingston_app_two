@@ -16,9 +16,11 @@
     <td><%= membership.price %></td>
     <td>
       <%= link_to 'Purchase', signed_in? ? purchase_url(membership) : signup_path %>
+      <% if signed_in? and current_user.admin? %>
       <%= link_to 'Show', membership %>
       <%= link_to 'Edit', edit_membership_path(membership) %>
       <%= link_to 'Destroy', membership, :confirm => 'Are you sure?', :method => :delete %>
+      <% end %>
     </td>
 <% end %>
 
