@@ -1,0 +1,10 @@
+<%= content_tag_for(:li, post) do %>
+    <%= post.title %>
+    <%= post.description %>
+    <%= post.published %>
+    <%= post.user.full_name %>
+    <%= link_to 'Show', post %>
+    <%= link_to 'Edit', edit_post_path(post) %>
+    <%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
+<% end %>
+

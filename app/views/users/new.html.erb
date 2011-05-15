@@ -1,0 +1,21 @@
+<div class="span-12">
+  <h1>Sign up now!</h1>
+  <%= form_for(@user) do |f| %>
+    <%= render 'form', :f => f %>
+    <div class="actions">
+      <%= f.submit "Create Account" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="span-12 last">
+  <h1>Newest registered users!</h1>
+  <div class="box">
+    <ul>
+    <% @users.each do |user| %>
+      <li><h5><%= link_to user.full_name, user %> - registered <%= time_ago_in_words(user.created_at) %> ago!</h5></li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+

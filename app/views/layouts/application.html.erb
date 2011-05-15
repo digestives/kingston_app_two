@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
+  <%= stylesheet_link_tag 'custom' %>
+  <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/prototype/1.6.1/prototype.js"></script>-->
+  <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/scriptaculous/1.8.3/scriptaculous.js?load=effects,slider"></script>-->
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+<div class="container">
+
+  <%= render 'layouts/header' %>
+
+  <div class="span-24" id="content">
+
+    <% %w(success notice error info).each do |e| %><%= content_tag(:div, flash[e.to_sym], :class => e, :id => e, :style => 'display: none;') %><% end %>
+
+    <% flash.each do |key, message| %><%= content_tag(:div, message, :class => key, :id => key) %><% end %>
+
+    <%= yield %>
+    <%= render 'layouts/debug' %>
+
+  </div>
+
+  <%= render 'layouts/footer' %>
+
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,3 @@
+page.remove_html(:after, 'users', :partial => 'user', :object => @user)
+page.visual_effect(:highlight, "user_#{@user.id}")
+

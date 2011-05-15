@@ -1,0 +1,6 @@
+
+
+page[:notice].visual_effect :appear
+page.replace_html :notice, flash[:notice]
+flash.discard
+

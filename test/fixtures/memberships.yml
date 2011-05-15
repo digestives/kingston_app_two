@@ -1,0 +1,36 @@
+# == Schema Information
+# Schema version: 20110513235109
+#
+# Table name: memberships
+#
+#  id          :integer         not null, primary key
+#  title       :string(255)
+#  description :string(255)
+#  swimming    :boolean
+#  tennis      :boolean
+#  sauna       :boolean
+#  guests      :integer
+#  price       :decimal(, )
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  description: MyString
+  swimming: false
+  tennis: false
+  sauna: false
+  guests: 1
+  price: 9.99
+
+two:
+  title: MyString
+  description: MyString
+  swimming: false
+  tennis: false
+  sauna: false
+  guests: 1
+  price: 9.99

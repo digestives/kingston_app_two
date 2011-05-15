@@ -1,0 +1,43 @@
+
+
+  <%= render 'shared/error_messages', :object => f.object %>
+
+  <fieldset class="box">
+
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= f.label :description %><br />
+      <%= f.text_area :description %>
+    </div>
+
+    <div class="field">
+      <%= f.label :swimming %><br />
+      <%= f.check_box :swimming %>
+    </div>
+
+    <div class="field">
+      <%= f.label :tennis %><br />
+      <%= f.check_box :tennis %>
+    </div>
+
+    <div class="field">
+      <%= f.label :sauna %><br />
+      <%= f.check_box :sauna %>
+    </div>
+
+    <div class="field">
+      <%= f.label :guests %><br />
+      <%= f.text_field :guests %>
+    </div>
+
+    <div class="field">
+      <%= f.label :price %><br />
+      <%= f.text_field :price %>
+    </div>
+
+  </fieldset>
+

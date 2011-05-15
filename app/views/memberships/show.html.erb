@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @membership.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @membership.description %>
+</p>
+
+<p>
+  <b>Swimming:</b>
+  <%= @membership.swimming %>
+</p>
+
+<p>
+  <b>Tennis:</b>
+  <%= @membership.tennis %>
+</p>
+
+<p>
+  <b>Sauna:</b>
+  <%= @membership.sauna %>
+</p>
+
+<p>
+  <b>Guests:</b>
+  <%= @membership.guests %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @membership.price %>
+</p>
+
+<% if signed_in? && current_user.admin? %>
+<%= link_to 'Edit', edit_membership_path(@membership) %> |
+<%= link_to 'Back', memberships_path %>
+<% else %>
+<%= link_to 'Back', memberships_path %>
+<% end %>
+

@@ -1,0 +1,8 @@
+page.insert_html(:top, 'posts', :partial => 'post', :object => @post)
+page.visual_effect(:highlight, "post_#{@post.id}")
+
+page[:success].show
+page.replace_html :success, flash[:success]
+page[:success].visual_effect(:appear)
+flash.discard
+

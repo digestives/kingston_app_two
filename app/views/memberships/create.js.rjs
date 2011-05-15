@@ -1,0 +1,3 @@
+page.insert_html(:after, 'memberships', :partial => 'membership', :object => @membership)
+page.visual_effect(:highlight, "membership_#{@membership.id}")
+

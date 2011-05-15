@@ -1,0 +1,32 @@
+
+  <%= render 'shared/error_messages', :object => f.object %>
+
+  <fieldset class="box">
+
+    <div class="field">
+      <%= f.label :forename %><br />
+      <%= f.text_field :forename %>
+    </div>
+
+    <div class="field">
+      <%= f.label :surname %><br />
+      <%= f.text_field :surname %>
+    </div>
+
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password, "New Password" %><br />
+      <%= f.password_field :password %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation %>
+    </div>
+
+  </fieldset>
+

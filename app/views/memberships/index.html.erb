@@ -1,0 +1,30 @@
+
+<% if signed_in? && current_user.admin? %>
+  <div class="span-12">
+  <h1>New membership</h1>
+    <%= form_for(@membership, :remote => true) do |f| %>
+      <%= render 'form', :f => f %>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="span-24">
+
+  <h1>Listing memberships</h1>
+  <table>
+    <tr id="memberships">
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Options</th>
+    </tr>
+      <%= render @memberships  %><!-- it knows to render _membership.html.erb -->
+  </table>
+
+
+
+</div>
+
