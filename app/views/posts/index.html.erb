@@ -1,15 +1,18 @@
  <div class="span-12">
 
+<% if current_user.admin? %>
 <h1>New post</h1>
 
-<%= form_for(@post, :remote => true) do |f| %>
+  <%= form_for(@post, :remote => true) do |f| %>
 
-  <%= render 'form', :f => f %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= render 'form', :f => f %>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 
+  <% end %>
 <% end %>
+
 
 </div>
 
