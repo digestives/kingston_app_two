@@ -21,7 +21,7 @@ DemoApp::Application.routes.draw do
 
   match '/memberships/:id/purchase' => 'memberships#purchase', :as => :purchase
 
-  match '/booking/:id' => 'bookings#new', :as => :booking
+  match '/booking/:id' => 'activities#booking', :as => :booking
 
   root :to => 'pages#index'
 
